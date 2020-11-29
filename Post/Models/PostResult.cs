@@ -5,8 +5,10 @@ namespace Post.Models
 {
     public class PostResult
     {
-        [JsonPropertyName("id")]
         public int Id { get; set; }
+
+        [JsonPropertyName("id")]
+        public int OriginalPostId { get; set; }
 
         [JsonPropertyName("userId")]
         public int UserId { get; set; }

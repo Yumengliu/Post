@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Post.Fetchers;
 using Post.Models;
+using Post.Repository;
 
 namespace Post
 {
@@ -10,12 +11,11 @@ namespace Post
     {
         static async Task Main(string[] args)
         {
+            PostRepository postRepository = new PostRepository();
             PostFetcher postFetcher = new PostFetcher();
             List<PostResult> PostResults = await postFetcher.FetchPosts();
-            foreach(PostResult p in PostResults)
-            {
-                Console.WriteLine(p.Id);
-            }
+            postRepository.Posts.AddRange(PostResults);
+            postRepository.SaveChanges();
         }
     }
 }
