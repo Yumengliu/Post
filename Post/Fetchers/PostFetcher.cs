@@ -21,5 +21,13 @@ namespace Post.Fetchers
             string jsonString = await response;
             return JsonSerializer.Deserialize<List<PostResult>>(jsonString);
         }
+
+        public async Task<List<Comment>> FetchComments(int PostId)
+        {
+            Task<string> response = httpClient.GetStringAsync("https://jsonplaceholder.typicode.com/comments?postId=" + PostId);
+            string jsonString = await response;
+            return JsonSerializer.Deserialize<List<Comment>>(jsonString);
+
+        }
     }
 }

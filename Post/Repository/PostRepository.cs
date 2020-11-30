@@ -7,6 +7,7 @@ namespace Post.Repository
     public class PostRepository : DbContext
     {
         public DbSet<PostResult> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public PostRepository()
         {
         }
